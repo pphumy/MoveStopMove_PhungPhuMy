@@ -21,15 +21,15 @@ public class BotController : Singleton<BotController>
     public Indicator indicatorPrefab;
 
     private string[] names = {
-        "Nanda3",
+        "Jack",
         "Kumar1407",
         "MeBuffalo",
-        "###Hello###",
+        "##089##",
         "GoodToKnow",
         "ItsMe999",
-        "JustPlay",
+        "Jupoey",
         "Slayder",
-        "beBee",
+        "beBsee",
         "okIm5",
         "jetLaggg",
         "3toCount",
@@ -37,9 +37,9 @@ public class BotController : Singleton<BotController>
         "imABot",
         "lovePizza",
         "humanOidx",
-        "randomName",
-        "justGuess",
-        "newName"
+        "randame",
+        "juess",
+        "newNafsme"
     };
 
     private List<string> namesToUse = new List<string>();
@@ -139,12 +139,11 @@ public class BotController : Singleton<BotController>
         indicator.SetName();
         Cache.Ins.SetBotGOToIndicatorGO(botGO, indicatorGO);
 
-        // Set bot variables
+
         float botScale = Random.Range(0.9f, 1.1f);
         botGO.transform.localScale = Vector3.one;
         botChar.IncreaseScale(player.GetScale() * botScale);
 
-        // Set scale and score to match player
         if (botScale < 1)
         {
             if (player.GetScore() <= 2)
@@ -164,7 +163,6 @@ public class BotController : Singleton<BotController>
 
     private Vector3 GetRandomPos()
     {
-        // 0 is TOP, 1 is BOT, 2 is LEFT, 3 is RIGHT
         float randomX = 0;
         float randomZ = 0;
 
