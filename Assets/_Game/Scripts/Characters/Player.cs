@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Player : Character, ITarget
 {
-    // Player Variables
-    [Header("Player Setting")]
     public Player player;
     public static Player _player;
     public Transform playerTransform;
@@ -15,44 +14,35 @@ public class Player : Character, ITarget
     public Collider playerCollider;
     public SphereCollider boundaryCollider;
 
-    // Joystick Variables
-    [Header("Joystick")]
+    public UnityAction onHit;
+    public UnityAction OnDeadRemove;
+
     public Canvas joystickCanvas;
     public JoytickController joystick;
     private float inputX;
     private float inputZ;
 
-    // Move and Rotate
-    [Header("Movement and Rotate")]
     private Vector3 movement;
     public float moveSpeed;
     public float rotateSpeed;
     private float angleToRotate;
 
-    // Animator
-    [Header("Animator")]
     public Animator playerAnimator;
 
-    // Weapon
-    [Header("Weapon")]
     private Weapon weapon;
     private WeaponID weaponID;
     public Transform weaponHolder;
     private WeaponSkinID weaponSkinID;
 
-    // Boolean Variables
     private bool canAttack;
     private bool isDead;
     private bool isWin;
     private bool canRevive;
 
-    // FollowingUI
-    [Header("Following UI")]
     public GameObject underUI;
     public Text getScoreText;
-    
-    // Relevant Variable
-    [Header("Other")]
+
+
     public PlayerSkin playerSkin;
     public Indicator playerIndicator;
     private Character killer;
@@ -166,7 +156,6 @@ public class Player : Character, ITarget
         joystickCanvas.gameObject.SetActive(activate);
     }
 
-    #region Move
     public override void Move()
     {
         inputX = joystick.inputHorizontal();
@@ -208,9 +197,7 @@ public class Player : Character, ITarget
     {
         playerRb.velocity = direction * moveSpeed * Time.deltaTime * GetScale();
     }
-    #endregion
 
-    #region Attack
     public override void Attack()
     {
         if (canAttack)
@@ -234,7 +221,7 @@ public class Player : Character, ITarget
 
     IEnumerator ThrowWeapon()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
         if (!canAttack)
         {
             playerAnimator.SetBool(Constant.ANIM_IS_ATTACK, true);
@@ -256,9 +243,9 @@ public class Player : Character, ITarget
         angleToRotate = Mathf.Rad2Deg * Mathf.Atan2(xPos, zPos);
         playerModel.rotation = Quaternion.AngleAxis(angleToRotate, Vector3.up);
     }
-    #endregion
 
-    #region Death
+
+
     public override void Death(Character killerChar)
     {
         if (!isWin)
@@ -301,28 +288,9 @@ public class Player : Character, ITarget
         UIManager.Ins.OpenUI(UIID.UICFail);
         SoundManager.Ins.PlayLoseSound();
 
-        //SetProgressAndRank();
     }
 
-    //private void SetProgressAndRank()
-    //{
-    //    PlayerData data = PlayerDataController.Ins.LoadFromJson();
-
-    //    // Set Progress
-    //    float newProgress = (float)LevelManager.Ins.GetNumOfBotsDie() / (float)LevelManager.Ins.GetNumOfTotalBots();
-    //    if (data.progress < newProgress)
-    //    {
-    //        data.progress = newProgress;
-    //    }
-    //    // Set Rank
-    //    int newRank = LevelManager.Ins.GetRemainNumOfBots() + 1;
-    //    if (newRank < data.bestRank)
-    //    {
-    //        data.bestRank = newRank;
-    //    }
-
-    //    PlayerDataController.Ins.SaveToJson(data);
-    //}
+    
 
     public bool CanBeTargeted()
     {
@@ -332,9 +300,9 @@ public class Player : Character, ITarget
     public void DisableLockTarget() { }
 
     public void EnableLockTarget() { }
-    #endregion
 
-    #region Win
+
+
     public void Win()
     {
         if (!isDead)
@@ -357,10 +325,9 @@ public class Player : Character, ITarget
             PlayerDataController.Ins.SaveToJson(data);
         }
     }
-    #endregion
 
 
-    #region Skin
+
     public PlayerSkin GetPlayerSkin()
     {
         return playerSkin;
@@ -378,7 +345,7 @@ public class Player : Character, ITarget
             playerAnimator.SetBool(Constant.ANIM_IS_DANCE, false);
         }
     }
-    #endregion
+
 
     
     public override void IncreaseRange(float increaseValue)
