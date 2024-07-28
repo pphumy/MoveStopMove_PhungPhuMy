@@ -37,7 +37,7 @@ public class PlayerDataController : Singleton<PlayerDataController>
                 hatID = 0,
                 weaponID = 0,
                 shieldID = 0,
-                coins = 0
+                coins = 1000
             };
 
             return data;

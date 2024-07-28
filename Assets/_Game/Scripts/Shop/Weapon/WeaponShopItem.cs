@@ -142,6 +142,14 @@ public class WeaponShopItem : MonoBehaviour
         }
         else
         {
+            ItemUnlockData data = new ItemUnlockData()
+            {
+                hatItemStates = new int[] { 0, 0, 0, 0, 0, 0 },
+                pantItemStates = new int[] { 1, 0, 0, 0, 0, 0 },
+                shieldItemStates = new int[] { 0, 0, 0, 0, 0, 0 },
+                setItemStates = new int[] { 0, 0, 0, 0, 0 },
+                weaponStates = new int[] { 1, 0, 0, 0, 0, 0 }
+            };
             return 0;
         }
 
