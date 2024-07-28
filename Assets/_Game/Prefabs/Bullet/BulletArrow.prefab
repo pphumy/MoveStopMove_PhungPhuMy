@@ -73,9 +73,7 @@ MonoBehaviour:
   range: 6
   speed: 6
   meshRends:
-  - {fileID: 9180091007544855271}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7794530024530464956, guid: 741d76077a15d4ca5b24e95132536a57, type: 3}
 --- !u!1001 &1475781243447895858
 PrefabInstance:
   m_ObjectHideFlags: 0
