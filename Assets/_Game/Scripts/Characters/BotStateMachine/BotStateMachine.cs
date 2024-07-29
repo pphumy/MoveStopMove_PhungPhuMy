@@ -66,7 +66,7 @@ public class BotStateMachine : Character, ITarget, IHit
     {
         botCollider.enabled = true;
         currentState = WaitState;
-        currentState.EnterState(bot);
+        currentState.OnEnter(bot);
         switchingState = false;
         scale = 1;
 
@@ -89,7 +89,7 @@ public class BotStateMachine : Character, ITarget, IHit
     {
         if (!switchingState)
         {
-            currentState.UpdateState(bot);
+            currentState.OnExecute(bot);
         }
     }
 
@@ -98,9 +98,9 @@ public class BotStateMachine : Character, ITarget, IHit
         if (currentState != state)
         {
             switchingState = true;
-            currentState.ExitState(bot);
+            currentState.OnExit(bot);
             currentState = state;
-            state.EnterState(bot);
+            state.OnEnter(bot);
             switchingState = false;
         }
     }

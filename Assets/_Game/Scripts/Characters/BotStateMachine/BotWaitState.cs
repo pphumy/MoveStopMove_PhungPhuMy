@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BotWaitState : BotBaseState
 {
-    public override void EnterState(BotStateMachine bot)
+    public override void OnEnter(BotStateMachine bot)
     {
         bot.agent.speed = 0;
         bot.botAnimator.SetBool(Constant.ANIM_IS_IDLE, true);
     }
 
-    public override void UpdateState(BotStateMachine bot)
+    public override void OnExecute(BotStateMachine bot)
     {
         if (LevelManager.Ins.GetGameState() == Constant.GameState.PLAY)
         {
@@ -18,5 +18,5 @@ public class BotWaitState : BotBaseState
         }
     }
 
-    public override void ExitState(BotStateMachine bot) { }
+    public override void OnExit(BotStateMachine bot) { }
 }

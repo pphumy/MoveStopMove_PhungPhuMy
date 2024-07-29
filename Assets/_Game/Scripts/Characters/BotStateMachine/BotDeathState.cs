@@ -6,7 +6,7 @@ public class BotDeathState : BotBaseState
 {
     private float timeCounter = 0;
 
-    public override void EnterState(BotStateMachine bot)
+    public override void OnEnter(BotStateMachine bot)
     {
         timeCounter = 0;
         bot.agent.speed = 0;
@@ -16,7 +16,7 @@ public class BotDeathState : BotBaseState
         BotController.Ins.ClearBot();
     }
 
-    public override void UpdateState(BotStateMachine bot)
+    public override void OnExecute(BotStateMachine bot)
     {
         timeCounter += Time.deltaTime;
         if (timeCounter > bot.timeDeath)
@@ -27,5 +27,5 @@ public class BotDeathState : BotBaseState
         }
     }
 
-    public override void ExitState(BotStateMachine bot) { }
+    public override void OnExit(BotStateMachine bot) { }
 }

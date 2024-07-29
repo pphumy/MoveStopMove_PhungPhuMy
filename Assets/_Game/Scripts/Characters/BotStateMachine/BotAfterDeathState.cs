@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BotAfterDeathState : BotBaseState
 {
-    public override void EnterState(BotStateMachine bot) {  }
+    public override void OnEnter(BotStateMachine bot) {  }
 
-    public override void UpdateState(BotStateMachine bot)
+    public override void OnExecute(BotStateMachine bot)
     {
         if (bot.gameObject.activeInHierarchy == true)
             bot.SwitchState(bot.WaitState);
     }
 
-    public override void ExitState(BotStateMachine bot) { }
+    public override void OnExit(BotStateMachine bot) { }
 }

@@ -39,7 +39,9 @@ public class BotController : Singleton<BotController>
         "humanOidx",
         "randame",
         "juess",
-        "newNafsme"
+        "newNafsme",
+        "bot",
+        "bot2",
     };
 
     private List<string> namesToUse = new List<string>();
@@ -99,20 +101,39 @@ public class BotController : Singleton<BotController>
         int remainNumOfBots = LevelManager.Ins.GetRemainNumOfBots();
         int numActiveBots = SimplePool.GetNumOfActiveObjs(botPrefab.gameObject);
 
-        if (remainNumOfBots >= numOfBotsOnGround)
-        {
-            SpawnBot();
-        }
-        else
-        {
-            if (numActiveBots < remainNumOfBots)
-            {
-                for (int i = 0; i < remainNumOfBots - numActiveBots; i++)
-                {
-                    SpawnBot();
-                }
-            }
-        }
+
+        //if(remainNumOfBots >= numOfBotsOnGround)
+        //{
+        //    SpawnBot();
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < remainNumOfBots; i++)
+        //    {
+        //        SpawnBot();
+        //    }
+        
+        //}
+        //if (remainNumOfBots >= numOfBotsOnGround)
+        //{
+        //    Debug.Log("bug");
+        //    SpawnBot();
+        //}
+        //else
+        //{
+        //    if (numActiveBots < remainNumOfBots)
+        //    {
+        //        for (int i = 0; i < remainNumOfBots - numActiveBots; i++)
+        //        {
+        //            Debug.Log("bug2");
+        //            SpawnBot();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return;
+        //    }
+        //}
     }
 
     private void SpawnBot()

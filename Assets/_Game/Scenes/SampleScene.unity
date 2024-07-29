@@ -6882,7 +6882,7 @@ GameObject:
   - component: {fileID: 1050229087}
   - component: {fileID: 1050229089}
   - component: {fileID: 1050229090}
-  - component: {fileID: 1050229091}
+  - component: {fileID: 1050229093}
   m_Layer: 0
   m_Name: Player
   m_TagString: Character
@@ -6960,7 +6960,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1050229091
+--- !u!114 &1050229093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7968,9 +7968,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 1808568546}
-  charBound: {fileID: 1050229091}
+  charBound: {fileID: 0}
   bodyRend: {fileID: 524359563328783925}
   player: {fileID: 1808568546}
+  atkRange: {fileID: 0}
   playerTransform: {fileID: 1050229087}
   playerModel: {fileID: 5006512736563444677}
   playerRb: {fileID: 1050229089}
@@ -8346,7 +8347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1808568546}
-  numOfBotsOnGround: 7
+  numOfBotsOnGround: 20
   botsHolder: {fileID: 245937546}
   botPrefab: {fileID: 3807601877254056610, guid: 4d05a73a40ca448ec958a1e835560111, type: 3}
   reviveTime: 5

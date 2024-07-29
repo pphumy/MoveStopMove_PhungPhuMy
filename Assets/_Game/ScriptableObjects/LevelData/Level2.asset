@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   gamePlane: {fileID: 2051796983713254953, guid: 9d3571cfe4e724c479611bbaf563613e, type: 3}
-  numOfBots: 40
+  numOfBots: 20

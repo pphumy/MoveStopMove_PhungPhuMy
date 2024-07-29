@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class BotBaseState
 {
-    public abstract void EnterState(BotStateMachine bot);
+    public abstract void OnEnter(BotStateMachine bot);
 
-    public abstract void UpdateState(BotStateMachine bot);
+    public abstract void OnExecute(BotStateMachine bot);
 
-    public abstract void ExitState(BotStateMachine bot);
+    public abstract void OnExit(BotStateMachine bot);
 }

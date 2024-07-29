@@ -6,7 +6,7 @@ public class BotAttackState : BotBaseState
 {
     private float timeCounter;
 
-    public override void EnterState(BotStateMachine bot)
+    public override void OnEnter(BotStateMachine bot)
     {
         timeCounter = 0;
         bot.agent.speed = 0;
@@ -14,14 +14,14 @@ public class BotAttackState : BotBaseState
         bot.Attack();
     }
 
-    public override void UpdateState(BotStateMachine bot)
+    public override void OnExecute(BotStateMachine bot)
     {
         timeCounter += Time.deltaTime;
         if (timeCounter > bot.timeAttack)
             bot.SwitchState(bot.MoveState);
     }
 
-    public override void ExitState(BotStateMachine bot)
+    public override void OnExit(BotStateMachine bot)
     {
         bot.botAnimator.SetBool(Constant.ANIM_IS_ATTACK, false);
     }

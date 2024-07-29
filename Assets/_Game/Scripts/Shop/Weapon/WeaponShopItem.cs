@@ -142,6 +142,7 @@ public class WeaponShopItem : MonoBehaviour
         }
         else
         {
+            //config default item state
             ItemUnlockData data = new ItemUnlockData()
             {
                 hatItemStates = new int[] { 0, 0, 0, 0, 0, 0 },

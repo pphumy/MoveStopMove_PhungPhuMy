@@ -6,14 +6,14 @@ public class BotIdleState : BotBaseState
 {
     private float timeCounter;
 
-    public override void EnterState(BotStateMachine bot)
+    public override void OnEnter(BotStateMachine bot)
     {
         timeCounter = 0;
         bot.agent.speed = 0;
         bot.botAnimator.SetBool(Constant.ANIM_IS_IDLE, true);
     }
 
-    public override void UpdateState(BotStateMachine bot)
+    public override void OnExecute(BotStateMachine bot)
     {
         timeCounter += Time.deltaTime;
         if (timeCounter > bot.timeIdle)
@@ -30,7 +30,7 @@ public class BotIdleState : BotBaseState
         }
     }
 
-    public override void ExitState(BotStateMachine bot)
+    public override void OnExit(BotStateMachine bot)
     {
         bot.botAnimator.SetBool(Constant.ANIM_IS_IDLE, false);
     }

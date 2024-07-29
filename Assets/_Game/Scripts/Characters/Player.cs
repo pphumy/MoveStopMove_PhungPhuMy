@@ -8,6 +8,7 @@ public class Player : Character, ITarget
 {
     public Player player;
     public static Player _player;
+    public PlayerAtkRange atkRange;
     public Transform playerTransform;
     public Transform playerModel;
     public Rigidbody playerRb;
@@ -86,6 +87,7 @@ public class Player : Character, ITarget
         movement = Vector3.zero;
         player.transform.rotation = Quaternion.Euler(0, 60, 0);
         charBound.transform.position = Vector3.zero;
+        //atkRange.transform.position = Vector3.zero;
 
         scale = 1;
         score = 0;
@@ -205,6 +207,8 @@ public class Player : Character, ITarget
             GameObject targetCharacter = charBound.GetTargetCharacter();
             if (targetCharacter != null)
             {
+                GameObject target = targetCharacter.transform.parent.gameObject;
+                target.transform.GetChild(2).gameObject.SetActive(true);
                 canAttack = false;
                 playerAnimator.SetBool(Constant.ANIM_IS_ATTACK, true);
 
@@ -213,9 +217,10 @@ public class Player : Character, ITarget
 
                 StartCoroutine(ThrowWeapon());
                 Invoke(nameof(StopAttack), 1f);
-
                 SoundManager.Ins.PlayThrowSound();
             }
+            
+
         }
     }
 

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterBoundary : MonoBehaviour
+public class PlayerAtkRange : MonoBehaviour
 {
     public Transform charBoundTransform;
     public Character character;
     private float charBaseRange;
 
-    private List<GameObject> targetCharacters;
+    private List<BotStateMachine> targetCharacters;
     public bool isPlayer;
 
     private void OnEnable()
@@ -18,7 +18,7 @@ public class CharacterBoundary : MonoBehaviour
 
     public void OnInit()
     {
-        targetCharacters = new List<GameObject>();
+        targetCharacters = new List<BotStateMachine>();
         charBaseRange = 6.5f;
     }
 
@@ -27,15 +27,16 @@ public class CharacterBoundary : MonoBehaviour
         if (other.CompareTag(Constant.TAG_CHAR_MODEL))
         {
             ITarget newITarget = Cache.Ins.GetITargetFromGameObj(other.gameObject);
+            BotStateMachine bot = other.gameObject.GetComponent<BotStateMachine>();
             if (newITarget != null && newITarget.CanBeTargeted())
             {
-                if (!targetCharacters.Contains(other.gameObject))
+                if (!targetCharacters.Contains(bot))
                 {
-                    targetCharacters.Add(other.gameObject);
+                    targetCharacters.Add(bot);
                 }
                 if (isPlayer)
                 {
-                    //newITarget.EnableLockTarget();
+                    newITarget.EnableLockTarget();
                 }
             }
         }
@@ -46,31 +47,30 @@ public class CharacterBoundary : MonoBehaviour
         if (other.CompareTag(Constant.TAG_CHAR_MODEL))
         {
             ITarget newITarget = Cache.Ins.GetITargetFromGameObj(other.gameObject);
+            BotStateMachine bot = other.gameObject.GetComponent<BotStateMachine>();
             if (newITarget != null)
             {
                 if (isPlayer)
                 {
-                    targetCharacters.Remove(other.gameObject);
+                    targetCharacters.Remove(bot);
                     newITarget.DisableLockTarget();
                 }
             }
         }
     }
 
-    public GameObject GetTargetCharacter()
+    public BotStateMachine GetTargetCharacter()
     {
         if (targetCharacters.Count == 0) return null;
         float shortestDistance = 100f;
         float newDistance;
-        GameObject targetCharacter = null;
+        BotStateMachine targetCharacter = null;
 
         for (int i = targetCharacters.Count - 1; i >= 0; i--)
         {
-            GameObject currentChar = targetCharacters[i];
-            GameObject target = currentChar.transform.parent.gameObject;
-            target.transform.GetChild(2).gameObject.SetActive(false);
-
-            if (!IsCharValid(currentChar))
+            BotStateMachine currentChar = targetCharacters[i];
+            currentChar.DisableLockTarget();
+            if (!IsCharValid(currentChar.gameObject))
             {
                 targetCharacters.Remove(currentChar);
                 if (targetCharacters.Count == 0) return null;
@@ -82,7 +82,8 @@ public class CharacterBoundary : MonoBehaviour
                 {
                     shortestDistance = newDistance;
                     targetCharacter = currentChar;
-                    
+                    targetCharacter.EnableLockTarget();
+
                 }
             }
         }

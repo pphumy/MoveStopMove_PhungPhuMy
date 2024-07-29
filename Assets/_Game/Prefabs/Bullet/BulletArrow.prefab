@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletTransform: {fileID: 2769154748948951255}
-  bulletRenderTransform: {fileID: 0}
+  bulletRenderTransform: {fileID: 5837144462475447336}
   meshRend: {fileID: 9180091007544855271}
   range: 6
   speed: 6
