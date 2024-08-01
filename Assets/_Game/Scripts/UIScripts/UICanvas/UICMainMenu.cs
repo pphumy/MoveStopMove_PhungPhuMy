@@ -50,15 +50,15 @@ public class UICMainMenu : UICanvas
         Close();
     }
 
-    public void ChangeName()
-    {
-        string newName = playerText.text;
-        if (newName.Length > 0)
-        {
-            PlayerData data = PlayerDataController.Ins.LoadFromJson();
-            data.name = newName;
-            PlayerDataController.Ins.SaveToJson(data);
-            UIManager.Ins.player.InitName();
-        }
-    }
+    //public void ChangeName()
+    //{
+    //    string newName = playerText.text;
+    //    if (newName.Length > 0)
+    //    {
+    //        PlayerData data = PlayerDataController.Ins.LoadFromJson();
+    //        data.name = newName;
+    //        PlayerDataController.Ins.SaveToJson(data);
+    //        UIManager.Ins.player.InitName();
+    //    }
+    //}
 }

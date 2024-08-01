@@ -136,7 +136,7 @@ public class BotStateMachine : Character, ITarget, IHit
 
     IEnumerator ThrowWeapon()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
         weapon.Attack(bot.botModel, bot);
         weapon.gameObject.SetActive(false);
     }

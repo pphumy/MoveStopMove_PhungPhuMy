@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.34602174, g: 0.6320802, b: 0.8686343, a: 1}
+  m_IndirectSpecularColor: {r: 0.34768784, g: 0.63230073, b: 0.87078047, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7185,11 +7185,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2483842994588565547, guid: 4d71ca1884af949d6973ae273ecd5a83, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2483842994588565547, guid: 4d71ca1884af949d6973ae273ecd5a83, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2483842994588565547, guid: 4d71ca1884af949d6973ae273ecd5a83, type: 3}
       propertyPath: m_RootOrder
@@ -7197,11 +7197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2483842994588565547, guid: 4d71ca1884af949d6973ae273ecd5a83, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2483842994588565547, guid: 4d71ca1884af949d6973ae273ecd5a83, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2483842994588565547, guid: 4d71ca1884af949d6973ae273ecd5a83, type: 3}
       propertyPath: m_AnchorMin.x
@@ -7968,7 +7968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 1808568546}
-  charBound: {fileID: 0}
+  charBound: {fileID: 1050229093}
   bodyRend: {fileID: 524359563328783925}
   player: {fileID: 1808568546}
   atkRange: {fileID: 0}
