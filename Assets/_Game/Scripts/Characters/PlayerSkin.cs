@@ -75,7 +75,7 @@ public class PlayerSkin : MonoBehaviour
     private void CheckUnlockOneTimeHat()
     {
         PlayerData playerData = PlayerDataController.Ins.LoadFromJson();
-        string itemJson = File.ReadAllText(Application.dataPath + Constant.ITEM_STATE_PATH);
+        string itemJson = File.ReadAllText(PlayerDataController.Ins.itemData);
         ItemUnlockData itemData = JsonUtility.FromJson<ItemUnlockData>(itemJson);
         if (itemData.hatItemStates[(int)hatSkinID] == (int)Constant.ItemState.EquipOneTime)
         {
@@ -86,7 +86,7 @@ public class PlayerSkin : MonoBehaviour
             itemJson = JsonUtility.ToJson(itemData);
 
             PlayerDataController.Ins.SaveToJson(playerData);
-            File.WriteAllText(Application.dataPath + Constant.ITEM_STATE_PATH, itemJson);
+            File.WriteAllText(PlayerDataController.Ins.itemData, itemJson);
         }
     }
 
@@ -115,7 +115,7 @@ public class PlayerSkin : MonoBehaviour
     private void CheckUnlockOneTimePant()
     {
         PlayerData playerData = PlayerDataController.Ins.LoadFromJson();
-        string itemJson = File.ReadAllText(Application.dataPath + Constant.ITEM_STATE_PATH);
+        string itemJson = File.ReadAllText(PlayerDataController.Ins.itemData);
         ItemUnlockData itemData = JsonUtility.FromJson<ItemUnlockData>(itemJson);
         if (itemData.pantItemStates[(int)pantSkinID] == (int)Constant.ItemState.EquipOneTime)
         {
@@ -126,7 +126,7 @@ public class PlayerSkin : MonoBehaviour
             itemJson = JsonUtility.ToJson(itemData);
 
             PlayerDataController.Ins.SaveToJson(playerData);
-            File.WriteAllText(Application.dataPath + Constant.ITEM_STATE_PATH, itemJson);
+            File.WriteAllText(PlayerDataController.Ins.itemData, itemJson);
         }
     }
 
@@ -155,7 +155,7 @@ public class PlayerSkin : MonoBehaviour
     private void CheckUnlockOneTimeShield()
     {
         PlayerData playerData = PlayerDataController.Ins.LoadFromJson();
-        string itemJson = File.ReadAllText(Application.dataPath + Constant.ITEM_STATE_PATH);
+        string itemJson = File.ReadAllText(PlayerDataController.Ins.itemData);
         ItemUnlockData itemData = JsonUtility.FromJson<ItemUnlockData>(itemJson);
         if (itemData.shieldItemStates[(int)shieldSkinID] == (int)Constant.ItemState.EquipOneTime)
         {
@@ -166,7 +166,7 @@ public class PlayerSkin : MonoBehaviour
             itemJson = JsonUtility.ToJson(itemData);
 
             PlayerDataController.Ins.SaveToJson(playerData);
-            File.WriteAllText(Application.dataPath + Constant.ITEM_STATE_PATH, itemJson);
+            File.WriteAllText(PlayerDataController.Ins.itemData, itemJson);
         }
     }
 

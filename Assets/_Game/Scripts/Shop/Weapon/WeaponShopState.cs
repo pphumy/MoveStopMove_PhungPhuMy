@@ -21,7 +21,7 @@ public class WeaponShopState : MonoBehaviour
     {
         ResetAllShopState();
 
-        string itemJson = File.ReadAllText(Application.dataPath + Constant.ITEM_STATE_PATH);
+        string itemJson = File.ReadAllText(PlayerDataController.Ins.itemData);
         ItemUnlockData itemData = JsonUtility.FromJson<ItemUnlockData>(itemJson);
 
         if (itemData.weaponStates[(int)weaponID] == (int)Constant.ItemState.Lock)
@@ -57,13 +57,13 @@ public class WeaponShopState : MonoBehaviour
 
     private void UnlockWeapon()
     {
-        string itemJson = File.ReadAllText(Application.dataPath + Constant.ITEM_STATE_PATH);
+        string itemJson = File.ReadAllText(PlayerDataController.Ins.itemData);
         ItemUnlockData itemData = JsonUtility.FromJson<ItemUnlockData>(itemJson);
 
         itemData.weaponStates[(int)weaponID] = (int)Constant.ItemState.NotEquip;
 
         itemJson = JsonUtility.ToJson(itemData);
-        File.WriteAllText(Application.dataPath + Constant.ITEM_STATE_PATH, itemJson);
+        File.WriteAllText(PlayerDataController.Ins.itemData, itemJson);
     }
 
     private void ResetAllShopState()

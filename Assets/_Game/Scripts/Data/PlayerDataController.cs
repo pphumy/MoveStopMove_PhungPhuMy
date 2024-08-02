@@ -5,8 +5,14 @@ using System.IO;
 
 public class PlayerDataController : Singleton<PlayerDataController>
 {
+
+    public string playerData;
+    public string itemData;
+
     private void Awake()
     {
+        playerData = Path.Combine(Application.persistentDataPath, Constant.PLAYER_DATA_PATH);
+        itemData = Path.Combine(Application.persistentDataPath, Constant.ITEM_STATE_PATH);
         SaveToJson(LoadFromJson());
         LoadFromJsonItem();
         SaveToJsonItem(LoadFromJsonItem());
@@ -15,19 +21,19 @@ public class PlayerDataController : Singleton<PlayerDataController>
     public void SaveToJson(PlayerData data)
     {
         string json = JsonUtility.ToJson(data);
-        File.WriteAllText(Application.dataPath + Constant.PLAYER_DATA_PATH, json);
+        File.WriteAllText(playerData, json);
     }
     public void SaveToJsonItem(ItemUnlockData data)
     {
         string jsonItem = JsonUtility.ToJson(data);
-        File.WriteAllText(Application.dataPath + Constant.ITEM_STATE_PATH, jsonItem);
+        File.WriteAllText(itemData, jsonItem);
     }
 
     public PlayerData LoadFromJson()
     {
-        if (File.Exists(Application.dataPath + Constant.PLAYER_DATA_PATH))
+        if (File.Exists(playerData))
         {
-            string json = File.ReadAllText(Application.dataPath + Constant.PLAYER_DATA_PATH);
+            string json = File.ReadAllText(playerData);
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
 
             return data;
@@ -44,7 +50,7 @@ public class PlayerDataController : Singleton<PlayerDataController>
                 hatID = 0,
                 weaponID = 0,
                 shieldID = 0,
-                coins = 1000
+                coins = 3000
             };
 
             return data;
@@ -53,9 +59,9 @@ public class PlayerDataController : Singleton<PlayerDataController>
     
     public ItemUnlockData LoadFromJsonItem()
     {
-        if (File.Exists(Application.dataPath + Constant.ITEM_STATE_PATH))
+        if (File.Exists(PlayerDataController.Ins.itemData))
         {
-            string jsonItem = File.ReadAllText(Application.dataPath + Constant.ITEM_STATE_PATH);
+            string jsonItem = File.ReadAllText(itemData);
             ItemUnlockData dataItem = JsonUtility.FromJson<ItemUnlockData>(jsonItem);
 
             return dataItem;

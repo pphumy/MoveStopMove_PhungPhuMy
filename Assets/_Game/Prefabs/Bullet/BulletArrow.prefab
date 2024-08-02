@@ -73,7 +73,9 @@ MonoBehaviour:
   range: 6
   speed: 6
   meshRends:
-  - {fileID: 7794530024530464956, guid: 741d76077a15d4ca5b24e95132536a57, type: 3}
+  - {fileID: 9180091007544855271}
+  - {fileID: 9180091007544855271}
+  - {fileID: 9180091007544855271}
 --- !u!1001 &1475781243447895858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141,15 +143,15 @@ PrefabInstance:
     - target: {fileID: -1504981713932161579, guid: ceffb78c74021304889ac584f173d156, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 239378781582670930, guid: 7d22ba4646139ed499c8d6f6cba73b3e, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: ceffb78c74021304889ac584f173d156, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 5629084884208175553, guid: 7d22ba4646139ed499c8d6f6cba73b3e, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: ceffb78c74021304889ac584f173d156, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 5629084884208175553, guid: 7d22ba4646139ed499c8d6f6cba73b3e, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: ceffb78c74021304889ac584f173d156, type: 3}
       propertyPath: m_Name
       value: Arrow

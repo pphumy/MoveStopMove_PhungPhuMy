@@ -97,11 +97,11 @@ public class WeaponShopItem : MonoBehaviour
     private void SelectWeaponSkin()
     {
         // Load Item Data from Json File
-        string itemJson = File.ReadAllText(Application.dataPath + Constant.ITEM_STATE_PATH);
+        string itemJson = File.ReadAllText(PlayerDataController.Ins.itemData);
         ItemUnlockData itemData = JsonUtility.FromJson<ItemUnlockData>(itemJson);
 
         // Load Player Data from Json File
-        string playerJson = File.ReadAllText(Application.dataPath + Constant.PLAYER_DATA_PATH);
+        string playerJson = File.ReadAllText(PlayerDataController.Ins.playerData);
         PlayerData playerData = JsonUtility.FromJson<PlayerData>(playerJson);
 
         // Reset current weapon
@@ -121,8 +121,8 @@ public class WeaponShopItem : MonoBehaviour
         itemJson = JsonUtility.ToJson(itemData);
         playerJson = JsonUtility.ToJson(playerData);
 
-        File.WriteAllText(Application.dataPath + Constant.PLAYER_DATA_PATH, playerJson);
-        File.WriteAllText(Application.dataPath + Constant.ITEM_STATE_PATH, itemJson);
+        File.WriteAllText(PlayerDataController.Ins.playerData, playerJson);
+        File.WriteAllText(PlayerDataController.Ins.itemData, itemJson);
     }
 
     private void ResetAllBtn()
@@ -134,9 +134,9 @@ public class WeaponShopItem : MonoBehaviour
 
     private Constant.ItemState GetItemState()
     {
-        if (File.Exists(Application.dataPath + Constant.ITEM_STATE_PATH))
+        if (File.Exists(PlayerDataController.Ins.itemData))
         {
-            string json = File.ReadAllText(Application.dataPath + Constant.ITEM_STATE_PATH);
+            string json = File.ReadAllText(PlayerDataController.Ins.itemData);
             Constant.ItemState itemState = (Constant.ItemState)JsonUtility.FromJson<ItemUnlockData>(json).weaponSkinStates[(int)weaponSkinSO.weaponSkinID];
             return itemState;
         }

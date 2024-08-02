@@ -52,6 +52,6 @@ public static class Constant
     }
 
     // Save Path
-    public const string PLAYER_DATA_PATH = "/_Game/JSonFiles/saveFile.json";
-    public const string ITEM_STATE_PATH = "/_Game/JSonFiles/itemUnlockState.json";
+    public const string PLAYER_DATA_PATH = "saveFile.json";
+    public const string ITEM_STATE_PATH = "itemUnlockState.json";
 }

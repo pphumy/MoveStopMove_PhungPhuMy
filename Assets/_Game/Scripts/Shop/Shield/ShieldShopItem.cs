@@ -195,19 +195,19 @@ public class ShieldShopItem : MonoBehaviour
 
     private void RemoveUnlockOneTime()
     {
-        string itemJson = File.ReadAllText(Application.dataPath + Constant.ITEM_STATE_PATH);
+        string itemJson = File.ReadAllText(PlayerDataController.Ins.itemData);
         ItemUnlockData itemData = JsonUtility.FromJson<ItemUnlockData>(itemJson);
 
         itemData.shieldUnlockOneTime[(int)shieldSO.shieldSkinID] = (int)Constant.ItemUnlockOneTime.Used;
 
         itemJson = JsonUtility.ToJson(itemData);
-        File.WriteAllText(Application.dataPath + Constant.ITEM_STATE_PATH, itemJson);
+        File.WriteAllText(PlayerDataController.Ins.itemData, itemJson);
     }
 
     private void EquipItem(bool isOneTime)
     {
         // Change State Item
-        string itemJson = File.ReadAllText(Application.dataPath + Constant.ITEM_STATE_PATH);
+        string itemJson = File.ReadAllText(PlayerDataController.Ins.itemData);
         ItemUnlockData itemData = JsonUtility.FromJson<ItemUnlockData>(itemJson);
         if (isOneTime)
         {
@@ -219,7 +219,7 @@ public class ShieldShopItem : MonoBehaviour
         }
 
         // Remove Current Item
-        string playerJson = File.ReadAllText(Application.dataPath + Constant.PLAYER_DATA_PATH);
+        string playerJson = File.ReadAllText(PlayerDataController.Ins.playerData);
         PlayerData playerData = JsonUtility.FromJson<PlayerData>(playerJson);
 
         int currentItem = playerData.shieldID;
@@ -239,16 +239,16 @@ public class ShieldShopItem : MonoBehaviour
         itemJson = JsonUtility.ToJson(itemData);
         playerJson = JsonUtility.ToJson(playerData);
 
-        File.WriteAllText(Application.dataPath + Constant.PLAYER_DATA_PATH, playerJson);
-        File.WriteAllText(Application.dataPath + Constant.ITEM_STATE_PATH, itemJson);
+        File.WriteAllText(PlayerDataController.Ins.playerData, playerJson);
+        File.WriteAllText(PlayerDataController.Ins.itemData, itemJson);
     }
 
     private void UnEquipItem()
     {
-        string itemJson = File.ReadAllText(Application.dataPath + Constant.ITEM_STATE_PATH);
+        string itemJson = File.ReadAllText(PlayerDataController.Ins.itemData);
         ItemUnlockData itemData = JsonUtility.FromJson<ItemUnlockData>(itemJson);
 
-        string playerJson = File.ReadAllText(Application.dataPath + Constant.PLAYER_DATA_PATH);
+        string playerJson = File.ReadAllText(PlayerDataController.Ins.playerData);
         PlayerData playerData = JsonUtility.FromJson<PlayerData>(playerJson);
 
         int currentItem = playerData.shieldID;
@@ -267,15 +267,15 @@ public class ShieldShopItem : MonoBehaviour
         itemJson = JsonUtility.ToJson(itemData);
         playerJson = JsonUtility.ToJson(playerData);
 
-        File.WriteAllText(Application.dataPath + Constant.PLAYER_DATA_PATH, playerJson);
-        File.WriteAllText(Application.dataPath + Constant.ITEM_STATE_PATH, itemJson);
+        File.WriteAllText(PlayerDataController.Ins.playerData, playerJson);
+        File.WriteAllText(PlayerDataController.Ins.itemData, itemJson);
     }
 
     private Constant.ItemState GetItemState()
     {
-        if (File.Exists(Application.dataPath + Constant.ITEM_STATE_PATH))
+        if (File.Exists(PlayerDataController.Ins.itemData))
         {
-            string json = File.ReadAllText(Application.dataPath + Constant.ITEM_STATE_PATH);
+            string json = File.ReadAllText(PlayerDataController.Ins.itemData);
             Constant.ItemState itemState = (Constant.ItemState)JsonUtility.FromJson<ItemUnlockData>(json).shieldItemStates[(int)shieldSO.shieldSkinID];
             return itemState;
         }
@@ -287,9 +287,9 @@ public class ShieldShopItem : MonoBehaviour
 
     private Constant.ItemUnlockOneTime GetItemUnlockOneTime()
     {
-        if (File.Exists(Application.dataPath + Constant.ITEM_STATE_PATH))
+        if (File.Exists(PlayerDataController.Ins.itemData))
         {
-            string json = File.ReadAllText(Application.dataPath + Constant.ITEM_STATE_PATH);
+            string json = File.ReadAllText(PlayerDataController.Ins.itemData);
             Constant.ItemUnlockOneTime itemUnlockOneTime = (Constant.ItemUnlockOneTime)JsonUtility.FromJson<ItemUnlockData>(json).shieldUnlockOneTime[(int)shieldSO.shieldSkinID];
             return itemUnlockOneTime;
         }

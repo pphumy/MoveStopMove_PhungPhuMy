@@ -21,7 +21,9 @@ public class BulletArrow : Bullet
     {
         var materials = meshRends[index].sharedMaterials;
         materials[0] = weaponSkin;
-        
+        materials[1] = weaponSkin;
+        materials[2] = weaponSkin;
+
         meshRends[index].sharedMaterials = materials;
     }
 }
